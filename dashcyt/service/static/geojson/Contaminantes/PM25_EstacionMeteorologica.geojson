@@ -1,0 +1,33 @@
+{
+"type": "FeatureCollection",
+"name": "PM25_EstacionMeteorologica",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "fid": 1, "cve_estac": "BJU", "latitud": 19.370464, "longitud": -99.159596, "mean": 21.977690787490179 }, "geometry": { "type": "Point", "coordinates": [ -99.159596, 19.370464 ] } },
+{ "type": "Feature", "properties": { "fid": 2, "cve_estac": "MER", "latitud": 19.42461, "longitud": -99.119594, "mean": 26.398494802382238 }, "geometry": { "type": "Point", "coordinates": [ -99.119594, 19.42461 ] } },
+{ "type": "Feature", "properties": { "fid": 3, "cve_estac": "PED", "latitud": 19.325146, "longitud": -99.204136, "mean": 21.389167393639639 }, "geometry": { "type": "Point", "coordinates": [ -99.204136, 19.325146 ] } },
+{ "type": "Feature", "properties": { "fid": 4, "cve_estac": "SAG", "latitud": 19.532968, "longitud": -99.030324, "mean": 24.256086482486886 }, "geometry": { "type": "Point", "coordinates": [ -99.030324, 19.532968 ] } },
+{ "type": "Feature", "properties": { "fid": 5, "cve_estac": "TLA", "latitud": 19.529077, "longitud": -99.204597, "mean": 26.3656728237167 }, "geometry": { "type": "Point", "coordinates": [ -99.204597, 19.529077 ] } },
+{ "type": "Feature", "properties": { "fid": 6, "cve_estac": "XAL", "latitud": 19.525995, "longitud": -99.0824, "mean": 27.565678234031441 }, "geometry": { "type": "Point", "coordinates": [ -99.0824, 19.525995 ] } },
+{ "type": "Feature", "properties": { "fid": 7, "cve_estac": "UIZ", "latitud": 19.360794, "longitud": -99.07388, "mean": 25.09348183674685 }, "geometry": { "type": "Point", "coordinates": [ -99.07388, 19.360794 ] } },
+{ "type": "Feature", "properties": { "fid": 8, "cve_estac": "MON", "latitud": 19.460415, "longitud": -98.902853, "mean": 19.893186455676595 }, "geometry": { "type": "Point", "coordinates": [ -98.902853, 19.460415 ] } },
+{ "type": "Feature", "properties": { "fid": 9, "cve_estac": "CAM", "latitud": 19.468404, "longitud": -99.169794, "mean": 26.396367285118522 }, "geometry": { "type": "Point", "coordinates": [ -99.169794, 19.468404 ] } },
+{ "type": "Feature", "properties": { "fid": 10, "cve_estac": "COY", "latitud": 19.350258, "longitud": -99.157101, "mean": 24.188072855018806 }, "geometry": { "type": "Point", "coordinates": [ -99.157101, 19.350258 ] } },
+{ "type": "Feature", "properties": { "fid": 11, "cve_estac": "PER", "latitud": 19.38286, "longitud": -98.991858, "mean": 29.886167172799109 }, "geometry": { "type": "Point", "coordinates": [ -98.991858, 19.38286 ] } },
+{ "type": "Feature", "properties": { "fid": 12, "cve_estac": "SJA", "latitud": 19.452592, "longitud": -99.086095, "mean": 23.845405906697149 }, "geometry": { "type": "Point", "coordinates": [ -99.086095, 19.452592 ] } },
+{ "type": "Feature", "properties": { "fid": 13, "cve_estac": "ACO", "latitud": 19.635501, "longitud": -98.912003, "mean": 22.307723242164617 }, "geometry": { "type": "Point", "coordinates": [ -98.912003, 19.635501 ] } },
+{ "type": "Feature", "properties": { "fid": 14, "cve_estac": "NEZ", "latitud": 19.393734, "longitud": -99.028212, "mean": 22.970577756895054 }, "geometry": { "type": "Point", "coordinates": [ -99.028212, 19.393734 ] } },
+{ "type": "Feature", "properties": { "fid": 15, "cve_estac": "HGM", "latitud": 19.411617, "longitud": -99.152207, "mean": 24.270909058785065 }, "geometry": { "type": "Point", "coordinates": [ -99.152207, 19.411617 ] } },
+{ "type": "Feature", "properties": { "fid": 16, "cve_estac": "SFE", "latitud": 19.357357, "longitud": -99.262865, "mean": 20.140329932076042 }, "geometry": { "type": "Point", "coordinates": [ -99.262865, 19.357357 ] } },
+{ "type": "Feature", "properties": { "fid": 17, "cve_estac": "UAX", "latitud": 19.304441, "longitud": -99.103629, "mean": 21.229313745554755 }, "geometry": { "type": "Point", "coordinates": [ -99.103629, 19.304441 ] } },
+{ "type": "Feature", "properties": { "fid": 18, "cve_estac": "CCA", "latitud": 19.326111, "longitud": -99.176111, "mean": 19.249628760024002 }, "geometry": { "type": "Point", "coordinates": [ -99.176111, 19.326111 ] } },
+{ "type": "Feature", "properties": { "fid": 19, "cve_estac": "AJM", "latitud": 19.272161, "longitud": -99.207744, "mean": 19.671515549994261 }, "geometry": { "type": "Point", "coordinates": [ -99.207744, 19.272161 ] } },
+{ "type": "Feature", "properties": { "fid": 20, "cve_estac": "AJU", "latitud": 19.154286, "longitud": -99.162611, "mean": 20.163636019400109 }, "geometry": { "type": "Point", "coordinates": [ -99.162611, 19.154286 ] } },
+{ "type": "Feature", "properties": { "fid": 21, "cve_estac": "MGH", "latitud": 19.40405, "longitud": -99.20266, "mean": 22.227412557264962 }, "geometry": { "type": "Point", "coordinates": [ -99.20266, 19.40405 ] } },
+{ "type": "Feature", "properties": { "fid": 22, "cve_estac": "INN", "latitud": 19.291968, "longitud": -99.38052, "mean": 16.928713032415576 }, "geometry": { "type": "Point", "coordinates": [ -99.38052, 19.291968 ] } },
+{ "type": "Feature", "properties": { "fid": 23, "cve_estac": "GAM", "latitud": 19.4827, "longitud": -99.094517, "mean": 23.257098279494059 }, "geometry": { "type": "Point", "coordinates": [ -99.094517, 19.4827 ] } },
+{ "type": "Feature", "properties": { "fid": 24, "cve_estac": "MPA", "latitud": 19.1769, "longitud": -98.990189, "mean": 21.274870890658807 }, "geometry": { "type": "Point", "coordinates": [ -98.990189, 19.1769 ] } },
+{ "type": "Feature", "properties": { "fid": 25, "cve_estac": "FAR", "latitud": 19.473692, "longitud": -99.046176, "mean": 19.526926457869145 }, "geometry": { "type": "Point", "coordinates": [ -99.046176, 19.473692 ] } },
+{ "type": "Feature", "properties": { "fid": 26, "cve_estac": "SAC", "latitud": 19.34561, "longitud": -99.009381, "mean": 23.223955244956858 }, "geometry": { "type": "Point", "coordinates": [ -99.009381, 19.34561 ] } }
+]
+}

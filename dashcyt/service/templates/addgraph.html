@@ -1,0 +1,98 @@
+{%extends 'base.html'%}
+
+{% block header %}
+    <h1>{% block title %} Nuevo grafico {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+        <select id="graph_id" class="form-select" name="graph_id">
+            <option selected>Selecciona una opción</option>
+            {% for graph in graphs %}
+                <option value="{{ graph.id }}">{{ graph.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="query" class="form-label">Consulta</label>
+        <textarea class="form-control" id="query" rows="5" disabled readonly></textarea>
+    </div>
+    <div class="mb-3">
+        <select id="type" class="form-select" name="type">
+            <option selected>Selecciona un tipo de grafico</option>
+            <option value="bar">Grafica de barras</option>
+            <option value="map.choropleth">Mapa de coropletas</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="graph_options" class="form-label">Opciones de grafico</label>
+        <textarea class="form-control" id="graph_options" name="graph_options" rows="5"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="geojson" class="form-label">GeoJSON</label>
+        <input type="text" class="form-control" id="geojson" name="geojson">
+    </div>
+    <div class="mb-3">
+        <label for="order" class="form-label">Orden</label>
+        <input type="text" class="form-control" id="order" name="order">
+    </div>
+    <div id="extra_fields">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" onclick="preview()" class="btn btn-primary">Vista previa</button>
+</form>
+<div id="chart" class="chart"></div>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+    var plot = null;
+    var graph = null;
+    function preview(){
+        console.log("preview");
+        Plotly.purge('chart');
+        $.post("/{{report_id}}/graph/preview", $("form").serialize())
+        .done(function (data){
+            console.log(data);
+            graph = data;
+            graph = JSON.parse(data);
+            plot = Plotly.plot('chart',graph,{});
+        });
+        return false;
+    }
+
+</script>
+<script type="text/javascript">
+    var graphs = {{ graphs_json | safe }};
+    var fields = {{ fields_json | safe }};
+    $("#graph_id").on("change", function(e){
+        var id = this.value;
+        var graph = graphs.filter(g => g.id == id)[0];
+        var extra_fields = fields.filter(f => {let i=parseInt(id); return f.graph_ids.includes(i)});
+        var query_text = graph.query_text;
+        $("#query").val(query_text);
+        $("#type").val(graph.type);
+        $("#graph_options").val(graph.graph_options);
+        $("#order").val(graph.order);
+        $("#geojson").val(graph.geojson);
+        $("#extra_fields").innerHTML = "";
+        var html = "";
+        extra_fields.forEach( el => {
+            html += '<div class="mb-3">';
+            html += '<label for="field_'+el["id"]+'" class="form-label">'+el["name"]+'</label>';
+            html += '<input type="text" class="form-control" id="field_'+el["id"]+'" name="field_'+el["id"]+'">';
+            html += '<div id="field_'+el["id"]+'" class="form-text">'+el["description"]+'</div>';
+            html += '</div>';
+        });
+        $("#extra_fields")[0].innerHTML += html;
+        console.log(html);
+    });
+</script>
+{% endblock %}
+
+

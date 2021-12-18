@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: bash -c "ls -a && poetry run flask run -h 0.0.0.0 -p 3000"
+    #entrypoint: ["/bin/bash","-c","source .venv/bin/activate"]
+    ports:
+      - "3000:3000"

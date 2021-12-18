@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{% block header %}
+    <h1>{% block title %} Nuevo reporte {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  <div class="mb-3">
+    <label for="nameInput" class="form-label">Titulo del reporte</label>
+    <input type="text" class="form-control" id="nameInput" name="name">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
+
+

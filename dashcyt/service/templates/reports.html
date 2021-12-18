@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+{% block header %}
+    <h1>{% block title %} Reportes {% endblock %}</h1>
+    {% if g.user %}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn-primary" type="button" href="{{ url_for('reports.create') }}">Nuevo reporte</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Fecha de creacion</th>
+            <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+        <tr>
+          <th scope="row">{{ loop.index0+1 }}</th>
+          <td><a class="action" href="{{ url_for('graph.index', report_id=report['id']) }}">{{ report['name'] }}</a></td>
+          <td>{{ report['created_by']['username'] }}</td>
+          <td>{{ report['created_at'].strftime('%Y-%m-%d') }}</td>
+            <td><a class="btn btn-primary" type="button" href="{{ url_for('reports.download', report_id=report['id']) }}">Descargar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,130 @@
+{%extends 'base.html'%}
+
+{% block header %}
+    <h1>{% block title %} Grafica {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" onclick="addfilter()" class="btn btn-primary">Agregar filtro</button>
+        </div>
+        <div class="row mb-3" id="filters">
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" onclick="sendfilter()" class="btn btn-primary">Actualizar</button>
+        </div>
+    </form>
+    <div style="{background-color:'gray';height:'2px'}"></div>
+    <div id="chart" class="chart"></div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript">
+        var graphs = {{graphJSON | safe}};
+        var fields = {{ fields | safe}};
+        Plotly.plot('chart',graphs,{});
+        var filters = $("#filters")[0];
+        var values = {{ values | safe }};
+        function sendfilter(){
+            console.log("preview");
+            Plotly.purge('chart');
+            $.post("/graph/with-filters/{{graph_id}}/", $("form").serialize())
+            .done(function (data){
+                console.log(data);
+                graph = data;
+                graph = JSON.parse(data);
+                plot = Plotly.plot('chart',graph,{});
+            });
+            return false;
+        }
+        function addfilter(){
+            var id = uuidv4();
+            html = '<div id="filter_'+id+'_container" class="row mt-3">';
+            html += '<div class="col-md-1 mb-3">';
+            html += '<button type="button" onclick="removeRow(\''+id+'\')" class="btn btn-danger">Eliminar</button>';
+            html += '</div>';
+            html += '<div class="col-md-3 mb-3 ">';
+            html += '<select onchange="fieldChanged(event,this,\''+id+'\')" id="filter_'+id+'_field" class="form-select" name="filter_'+id+'_field">';
+            html += '<option value="-1" selected>Selecciona un campo</option>';
+            fields.forEach( el => {
+                html += '<option value="'+el+'">'+el+'</option>';
+            });
+            html += '</select>';
+            html += '</div>';
+            html += '<div class="col-md-3 mb-3">';
+            html += '<select id="filter_'+id+'_comparator" onclick="checkSelection(event,\''+id+'\')" onchange="compChanged(event,this,\''+id+'\')" class="form-select" name="filter_'+id+'_comparator">';
+            html += '<option selected>Selecciona un comparador</option>';
+            html += '<option value="eq">igual a</option>';
+            html += '<option value="neq">diferente a</option>';
+            html += '<option value="in">contiene a</option>';
+            html += '<option value="nin">no contiene a</option>';
+            html += '</select>';
+            html += '</div>';
+            html += '<div class="col-md-5 mb-3" id="filter_'+id+'_holder">';
+            html += '</div>';
+            html += '</div>';
+            filters.innerHTML += html;
+        }
+        function checkSelection(e, id){
+            var field = $("#filter_"+id+"_field");
+            if (field.val() == -1)
+            {
+                alert("Selecciona una campo");
+                e.preventDefault()
+                return false;
+            }
+        }
+        function removeRow(id){
+            $("#filter_"+id+"_container").remove();
+        }
+        function compChanged(e, obj, id){
+            var holder = $("#filter_"+id+"_holder")[0];
+            var field = $("#filter_"+id+"_field");
+            if (obj.value == "eq" || obj.value == "neq"){
+                holder.innerHTML = '<input type="text" class="form-control" id="filter_'+id+'_value" name="filter_'+id+'_value">';
+            }
+            else {
+                html = '';
+                html += '<select class="selectpicker" data-width="100%" id="filter_'+id+'_value" name="filter_'+id+'_multivalue" multiple>';
+                html += '<option disabled>Selecciona un valor</option>';
+                values[field.val()].forEach( el => {
+                    html += '<option value="'+el+'">'+el+'</option>';
+                });
+                html += '</select>'
+                holder.innerHTML = html;
+            }
+            $("#filter_"+id+"_value").selectpicker();
+            console.log(holder);
+            console.log(obj.value);
+        }
+        function fieldChanged(e, obj, id){
+            var holder = $("#filter_"+id+"_holder")[0];
+            var comparator = $("#filter_"+id+"_comparator");
+            if (comparator.val() == "eq" || comparator.val() == "neq"){
+                holder.innerHTML = '<input type="text" class="form-control" id="filter_'+id+'_value" name="filter_'+id+'_value">';
+            }
+            else if (comparator.val() == "in" || comparator.val() == "nin") {
+                html = '';
+                html += '<select class="selectpicker" data-width="100%" id="filter_'+id+'_value" name="filter_'+id+'_multivalue" multiple>';
+                html += '<option disabled>Selecciona un valor</option>';
+                values[obj.value].forEach( el => {
+                    html += '<option value="'+el+'">'+el+'</option>';
+                });
+                html += '</select>'
+                holder.innerHTML = html;
+            }
+            else {
+                return;
+            }
+            $("#filter_"+id+"_value").selectpicker();
+        }
+    </script>
+{% endblock %}
+
+

@@ -1,0 +1,221 @@
+{
+  "Users": [
+    {"id": 1,"username": "admin", "password": {"value": "admin", "hash": true}}
+  ],
+  "Reports": [
+    {"id": 1, "name": "Report Test", "user_id": 1},
+    {"id": 2, "name": "Report Test 2", "user_id": 1},
+    {"id": 3, "name": "Report Test 3", "user_id": 1},
+    {"id": 4, "name": "Report Test 4", "user_id": 1}
+  ],
+  "DefaultGraphs": [
+    {"id": 1,
+      "name": "Graph 1",
+      "query_text": "SELECT COUNT(CI.LETRA) AS NumeroDeCasosEfermedadesRespiratorias,CI.Letra,DI.CalendarYear as Year,CL.Asentamiento AS Colonia,CL.Nombre_De_La_Localidad FROM [SEDESA].[SAEH].[Defunciones] AS DE INNER JOIN [Catalogos].[DimDate] AS DI ON DE.Id_DimDate=DI.DateKey INNER JOIN [Catalogos].[Cat_CLUES] AS CL ON DE.[Id_CLUE]=CL.Id_CLUE INNER JOIN [Catalogos].[Cat_CIE] AS CI ON DE.Id_CIE=CI.Id_CIE WHERE CI.Letra='{letter}' GROUP BY CL.Asentamiento,CI.Letra,DI.CalendarYear,CL.Nombre_De_La_Localidad order by 3,1 desc",
+      "type": "bar",
+      "order": 1,
+      "graph_options": {
+        "x": "Nombre_De_La_Localidad",
+        "y": "NumeroDeCasosEfermedadesRespiratorias",
+        "color": "Year",
+        "barmode": "group",
+        "labels": {
+          "Nombre_De_La_Localidad": "Localidades",
+          "NumeroDeCasosEfermedadesRespiratorias": "No. de casos",
+          "Year": "Años"
+        },
+        "title": "Numero de casos de enfermedades respiratorias por localidad"
+      }
+    },
+    {"id": 2,
+      "name": "Graph 2",
+      "query_text": "SELECT COUNT(CI.LETRA) AS NumeroDeCasosEfermedadesRespiratorias,CI.Letra,DI.CalendarYear as Year,CL.Asentamiento AS Colonia,CL.Nombre_De_La_Localidad FROM [SEDESA].[SAEH].[Defunciones] AS DE INNER JOIN [Catalogos].[DimDate] AS DI ON DE.Id_DimDate=DI.DateKey INNER JOIN [Catalogos].[Cat_CLUES] AS CL ON DE.[Id_CLUE]=CL.Id_CLUE INNER JOIN [Catalogos].[Cat_CIE] AS CI ON DE.Id_CIE=CI.Id_CIE WHERE CI.Letra='{letter}' GROUP BY CL.Asentamiento,CI.Letra,DI.CalendarYear,CL.Nombre_De_La_Localidad order by 3,1 desc",
+      "type": "bar",
+      "order": 1,
+      "graph_options": {
+        "x": "Nombre_De_La_Localidad",
+        "y": "NumeroDeCasosEfermedadesRespiratorias",
+        "color": "Year",
+        "barmode": "group",
+        "labels": {
+          "Nombre_De_La_Localidad": "Localidades",
+          "NumeroDeCasosEfermedadesRespiratorias": "No. de casos",
+          "Year": "Años"
+        },
+        "title": "Numero de casos de enfermedades respiratorias por localidad"
+      }
+    },
+    {"id": 3,
+      "name": "Graph 3",
+      "query_text": "SELECT COUNT(CI.LETRA) AS NumeroDeCasosEfermedadesRespiratorias,CI.Letra,DI.CalendarYear as Year,CL.Asentamiento AS Colonia,CL.Nombre_De_La_Localidad FROM [SEDESA].[SAEH].[Defunciones] AS DE INNER JOIN [Catalogos].[DimDate] AS DI ON DE.Id_DimDate=DI.DateKey INNER JOIN [Catalogos].[Cat_CLUES] AS CL ON DE.[Id_CLUE]=CL.Id_CLUE INNER JOIN [Catalogos].[Cat_CIE] AS CI ON DE.Id_CIE=CI.Id_CIE WHERE CI.Letra='{letter}' GROUP BY CL.Asentamiento,CI.Letra,DI.CalendarYear,CL.Nombre_De_La_Localidad order by 3,1 desc",
+      "type": "bar",
+      "order": 1,
+      "graph_options": {
+        "x": "Nombre_De_La_Localidad",
+        "y": "NumeroDeCasosEfermedadesRespiratorias",
+        "color": "Year",
+        "barmode": "group",
+        "labels": {
+          "Nombre_De_La_Localidad": "Localidades",
+          "NumeroDeCasosEfermedadesRespiratorias": "No. de casos",
+          "Year": "Años"
+        },
+        "title": "Numero de casos de enfermedades respiratorias por localidad"
+      }
+    }
+  ],
+  "DefaultFields": [
+    {"id": 1, "name": "year", "type": "String", "description": "año con formato YYYY"},
+    {"id": 2, "name": "gender", "type": "String", "description": "genero masculino o femenino"},
+    {"id": 3, "name": "letter", "type": "String", "description": "Letra de la clave CIE10"}
+  ],
+  "DefaultGraphFields": [
+    {"default_graph_id": 2,"default_field_id": 1},
+    {"default_graph_id": 2,"default_field_id": 2},
+    {"default_graph_id": 1,"default_field_id": 3}
+  ],
+  "SavedField": [
+    {"id": 1,
+      "name": "letter",
+      "value": "J",
+      "default_field_id": 3,
+      "graph_id": 1
+    },
+    {"id": 2,
+      "name": "letter",
+      "value": "E",
+      "default_field_id": 3,
+      "graph_id": 2
+    },
+    {"id": 3,
+      "name": "year",
+      "value": "2018",
+      "default_field_id": 1,
+      "graph_id": 3
+    },
+    {"id": 4,
+      "name": "year",
+      "value": "2019",
+      "default_field_id": 1,
+      "graph_id": 4
+    },
+    {"id": 5,
+      "name": "year",
+      "value": "2020",
+      "default_field_id": 1,
+      "graph_id": 5
+    }
+
+  ],
+  "SavedGraph": [
+    {"id": 1,
+      "query_text": "SELECT COUNT(CI.LETRA) AS NumeroDeCasosEfermedadesRespiratorias,CI.Letra,DI.CalendarYear as Year,CL.Asentamiento AS Colonia,CL.Nombre_De_La_Localidad FROM [SEDESA].[SAEH].[Defunciones] AS DE INNER JOIN [Catalogos].[DimDate] AS DI ON DE.Id_DimDate=DI.DateKey INNER JOIN [Catalogos].[Cat_CLUES] AS CL ON DE.[Id_CLUE]=CL.Id_CLUE INNER JOIN [Catalogos].[Cat_CIE] AS CI ON DE.Id_CIE=CI.Id_CIE WHERE CI.Letra='{letter}' GROUP BY CL.Asentamiento,CI.Letra,DI.CalendarYear,CL.Nombre_De_La_Localidad order by 3,1 desc",
+      "name": "Defunciones por enfermedades respiratorias",
+      "graph_options": {
+        "x": "Nombre_De_La_Localidad",
+        "y": "NumeroDeCasosEfermedadesRespiratorias",
+        "color": "Year",
+        "barmode": "group",
+        "labels": {
+          "Nombre_De_La_Localidad": "Localidades",
+          "NumeroDeCasosEfermedadesRespiratorias": "No. de casos",
+          "Year": "Años"
+        },
+        "title": "Numero de casos de enfermedades respiratorias por localidad"
+      },
+      "order": 1,
+      "type": "bar",
+      "user_id": 1,
+      "report_id": 1
+    },
+    {"id": 2,
+      "query_text": "SELECT COUNT(CI.LETRA) AS NumeroDeCasos,CI.Letra,DI.CalendarYear as Year,CL.Asentamiento AS Colonia,CL.Nombre_De_La_Localidad FROM [SEDESA].[SAEH].[Defunciones] AS DE INNER JOIN [Catalogos].[DimDate] AS DI ON DE.Id_DimDate=DI.DateKey INNER JOIN [Catalogos].[Cat_CLUES] AS CL ON DE.[Id_CLUE]=CL.Id_CLUE INNER JOIN [Catalogos].[Cat_CIE] AS CI ON DE.Id_CIE=CI.Id_CIE WHERE CI.Letra='{letter}' GROUP BY CL.Asentamiento,CI.Letra,DI.CalendarYear,CL.Nombre_De_La_Localidad order by 3,1 desc",
+      "name": "Defunciones de diabetes por localidad",
+      "graph_options": {
+        "x": "Nombre_De_La_Localidad",
+        "y": "NumeroDeCasos",
+        "color": "Year",
+        "barmode": "group",
+        "labels": {
+          "Nombre_De_La_Localidad": "Localidades",
+          "NumeroDeCasosEfermedadesRespiratorias": "No. de casos",
+          "Year": "Años"
+        },
+        "title": "Numero de casos de diabetes por localidad"
+      },
+      "order": 2,
+      "type": "bar",
+      "user_id": 1,
+      "report_id": 1
+    },
+    {"id": 3,
+      "query_text": "SELECT DatosSICE.idaño, \nCount(DatosSICE.idconsulta) AS CountCuentaDeconsulta,\nNombre_Del_Municipio\nFROM [SICEUD].[dbo].SICE_Datos as DatosSICE\nINNER JOIN [SICEUD].[dbo].SICE_Cat_CLUES as Clues on DatosSICE.clues = Clues.CLUES\nWHERE (((DatosSICE.idarea)='1' \nOr (DatosSICE.idarea)='2' \nOr (DatosSICE.idarea)='3'))\nAnd idaño = {year}\nGROUP BY DatosSICE.idaño, Clues.Nombre_Del_Municipio",
+      "name": "Mapa cuentas del 2018",
+      "geojson": "geojson/Alcaldias.geojson",
+      "graph_options": {
+        "featureidkey":"properties.nomgeo",
+        "locations":"Nombre_Del_Municipio",
+        "color":"CountCuentaDeconsulta",
+        "color_continuous_scale":"Viridis",
+        "mapbox_style":"carto-positron",
+        "zoom":8,
+        "center":{"lat": 19.4326, "lon": -99.1332},
+        "opacity":0.5,
+        "labels":{
+          "CountCuentaDeconsulta": "Total de consultas"
+        },
+        "title": "Numero de casos de diabetes por localidad"
+      },
+      "order": 3,
+      "type": "map.choropleth",
+      "user_id": 1,
+      "report_id": 1
+    },
+    {"id": 4,
+      "query_text": "SELECT DatosSICE.idaño, \nCount(DatosSICE.idconsulta) AS CountCuentaDeconsulta,\nNombre_Del_Municipio\nFROM [SICEUD].[dbo].SICE_Datos as DatosSICE\nINNER JOIN [SICEUD].[dbo].SICE_Cat_CLUES as Clues on DatosSICE.clues = Clues.CLUES\nWHERE (((DatosSICE.idarea)='1' \nOr (DatosSICE.idarea)='2' \nOr (DatosSICE.idarea)='3'))\nAnd idaño = {year}\nGROUP BY DatosSICE.idaño, Clues.Nombre_Del_Municipio",
+      "name": "Mapa cuentas del 2019",
+      "geojson": "geojson/Alcaldias.geojson",
+      "graph_options": {
+        "featureidkey":"properties.nomgeo",
+        "locations":"Nombre_Del_Municipio",
+        "color":"CountCuentaDeconsulta",
+        "color_continuous_scale":"Viridis",
+        "mapbox_style":"carto-positron",
+        "zoom":8,
+        "center":{"lat": 19.4326, "lon": -99.1332},
+        "opacity":0.5,
+        "labels":{
+          "CountCuentaDeconsulta": "Total de consultas"
+        },
+        "title": "Numero de casos de diabetes por localidad"
+      },
+      "order": 4,
+      "type": "map.choropleth",
+      "user_id": 1,
+      "report_id": 1
+    },
+    {"id": 5,
+      "query_text": "SELECT DatosSICE.idaño, \nCount(DatosSICE.idconsulta) AS CountCuentaDeconsulta,\nNombre_Del_Municipio\nFROM [SICEUD].[dbo].SICE_Datos as DatosSICE\nINNER JOIN [SICEUD].[dbo].SICE_Cat_CLUES as Clues on DatosSICE.clues = Clues.CLUES\nWHERE (((DatosSICE.idarea)='1' \nOr (DatosSICE.idarea)='2' \nOr (DatosSICE.idarea)='3'))\nAnd idaño = {year}\nGROUP BY DatosSICE.idaño, Clues.Nombre_Del_Municipio",
+      "name": "Mapa cuentas del 2020",
+      "geojson": "geojson/Alcaldias.geojson",
+      "graph_options": {
+        "featureidkey":"properties.nomgeo",
+        "locations":"Nombre_Del_Municipio",
+        "color":"CountCuentaDeconsulta",
+        "color_continuous_scale":"Viridis",
+        "mapbox_style":"carto-positron",
+        "zoom":8,
+        "center":{"lat": 19.4326, "lon": -99.1332},
+        "opacity":0.5,
+        "labels":{
+          "CountCuentaDeconsulta": "Total de consultas"
+        },
+        "title": "Numero de casos de diabetes por localidad"
+      },
+      "order": 4,
+      "type": "map.choropleth",
+      "user_id": 1,
+      "report_id": 1
+    }
+  ]
+}

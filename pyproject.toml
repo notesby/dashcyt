@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "dashcyt"
+packages = [
+    { include = "service", from = "dashcyt" }
+]
+version = "0.1.0"
+description = ""
+authors = ["Hector Moreno <dhmoreno92@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8.2"
+Flask = "^2.0.2"
+plotly = "^5.4.0"
+pandas = "^1.3.5"
+pyodbc = "^4.0.32"
+Flask-SQLAlchemy = "^2.5.1"
+pdfkit = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
